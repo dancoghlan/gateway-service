@@ -1,0 +1,17 @@
+server:
+  port: 8081
+
+logging:
+  level:
+    org.springframework.cloud.gateway.handler.RoutePredicateHandlerMapping: DEBUG
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: todo-route
+          uri: http://todo-service:8082
+          predicates:
+            - Path=/**
+            - Header=Authorization, .*
+#            - Method=GET
