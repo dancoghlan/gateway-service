@@ -6,6 +6,8 @@ logging:
     org.springframework.cloud.gateway.handler.RoutePredicateHandlerMapping: DEBUG
 
 spring:
+  application:
+    name: gateway-service
   cloud:
     gateway:
       routes:
@@ -15,3 +17,8 @@ spring:
             - Path=/**
             - Header=Authorization, .*
 #            - Method=GET
+  sleuth:
+    enabled: true
+  zipkin:
+    base-url: http://zipkin:9411/
+    enabled: true
